@@ -10,24 +10,73 @@ save for Tuesday
 
 ## What Is Being Tested
 ### Individuals - Apply To Jobs
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ### Individuals - View Jobs Applied To
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ### Individuals - Search For Jobs
-
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 ### Individuals - Do Skills Tests
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ### Individuals - Put Up Resume
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ### Companies - Post Jobs
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ### Companies - Delete Job Postings
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ### Companies - Search For People
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ### Companies - Create Skill Tests
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ### Companies - Message People
+- Database :
+- Positive Service :
+- Negative Service :
+- Positive API :
+- Negative API :
 
 ## What Is Not Being Tested
 
@@ -51,3 +100,4 @@ comp1 + comp2
 ind3 + comp3
 ind4 + comp4
 ind5 + comp5
+simple login+logout
