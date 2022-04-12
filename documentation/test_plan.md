@@ -6,7 +6,9 @@
 - Tertiary Programs: DBeaver, Postman, AWS RDS, AWS EC2, GitHub, Git, GitBash, Zoom
 
 ## Deadlines
-save for Tuesday
+#### Sprint 1 : Friday, April 15th
+#### Sprint 2: Friday, April 22nd
+#### Final Deadline: Friday, April 29th
 
 ## What Is Being Tested
 ### Individuals - Apply To Jobs
@@ -29,6 +31,7 @@ save for Tuesday
 - Negative Service :
 - Positive API :
 - Negative API :
+
 ### Individuals - Do Skills Tests
 - Database :
 - Positive Service :

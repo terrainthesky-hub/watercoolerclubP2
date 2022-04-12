@@ -24,9 +24,3 @@
 
 
 ### Negative Acceptance Criteria (Sad Path)
-
-## User Story :
-### Positive Acceptance Criteria (Happy Path)
-
-
-### Negative Acceptance Criteria (Sad Path)
