@@ -11,3 +11,5 @@
 11. Job descriptions cannot exceed 500 characters.
 12. Skill test questions cannot exceed 100 characters.
 13. Skill test answers cannot exceed 100 characters.
+14. Usernames cannot exceed 30 characters.
+15. Passwords cannot exceed 30 characters.
