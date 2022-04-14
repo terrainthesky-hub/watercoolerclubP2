@@ -15,7 +15,7 @@ public class Job {
 
     }
 
-    Job(int jobId, String title, String type, String description, int companyId, String location, String companyName) {
+    public Job(int jobId, String title, String type, String description, int companyId, String location, String companyName) {
         this.jobId = jobId;
         this.title = title;
         this.type = type;

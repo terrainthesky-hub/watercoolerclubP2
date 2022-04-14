@@ -15,7 +15,7 @@ public class Applicant {
 
     }
 
-    Applicant(int id, String firstName, String lastName, long phoneNumber, String email, String workHistory, String references, String education) {
+    public Applicant(int id, String firstName, String lastName, long phoneNumber, String email, String workHistory, String references, String education) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

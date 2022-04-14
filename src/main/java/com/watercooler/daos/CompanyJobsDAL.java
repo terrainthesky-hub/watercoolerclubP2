@@ -1,13 +1,16 @@
 package com.watercooler.daos;
 
+import com.watercooler.entities.Applicant;
 import com.watercooler.entities.Job;
 
+import java.util.List;
+
 public interface CompanyJobsDAL {
-    Job postJob();
+    Job postJob(Job job);
 
-    Job viewJobs();
+    List<Job> viewJobs(int companyId);
 
-    Job viewApplicants();
+    List<Applicant> viewApplicants(int jobId);
 
-    Job deleteJobs();
+    int deleteJobs(int jobId);
 }
