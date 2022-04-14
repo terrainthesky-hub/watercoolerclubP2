@@ -13,6 +13,7 @@
 - As a company, I want to create an account so that I can log in and look for applicants.
 - As a company, I want to log in so that I can post jobs.
 - As a company, I want to log out so that nobody else posts jobs under our company name.
+- As a company, I want to create a profile so that applicants can learn about the company
 - As a company, I want to post jobs so that I can attract candidates for the job. 
 - As a company, I want to delete jobs I have posted so that I do not get applications for jobs that are no longer open. 
 - As a company, I want to view applications I have received so that I can select someone for the job.
@@ -230,6 +231,44 @@
 - When I click the Company button
 - When I click the company Logout button
 - Then I am on the login page
+
+## User Story: As a company, I want to create a profile so that applicants can learn about the company.
+### Positive Acceptance Criteria (Happy Path)
+- Given I am on the login page
+- When I input my username
+- When I input my password
+- When I click login
+- When I am on the company main page
+- When I click the Company button
+- When I click Edit Company
+- When I am on the company profile page
+- When I input the company name
+- When I input the company phone number
+- When I input the company email
+- When I input information about the company
+- When I select the company location
+- When I select related jobs to the company
+- When I hit update
+- When I click ok on the update success alert
+- Then I am on the company main page
+
+### Negative Acceptance Criteria (Sad Path)
+- Given I am on the login page
+- When I input my username
+- When I input my password
+- When I click login
+- When I am on the company main page
+- When I click the Company button
+- When I click Edit Company
+- When I am on the company profile page
+- When I input a company name is too long
+- When I input the company phone number
+- When I input the company email
+- When I input information about the company
+- When I select the company location
+- When I select related jobs to the company
+- When I hit update
+- Then I get an alert that tells me the company name is too long
 
 ## User Story: As a company, I want to post jobs so that I can attract candidates for the job.
 ### Positive Acceptance Criteria (Happy Path)
