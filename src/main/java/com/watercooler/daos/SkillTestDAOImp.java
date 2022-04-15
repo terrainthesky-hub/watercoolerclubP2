@@ -38,7 +38,7 @@ public class SkillTestDAOImp implements SkillTestDAOInt {
     }
 
     @Override
-    public SkillTest getSpecificSkillTests(int testId) {
+    public SkillTest getSpecificSkillTest(int testId) {
         try(Connection connection = DatabaseConnection.createConnection()) {
             String sqlString = "select * from skill_test_table where skill_test_id = ?";
             PreparedStatement sqlPrepared = connection.prepareStatement(sqlString);

@@ -9,7 +9,7 @@ public interface SkillTestDAOInt {
     List<SkillTest> getAllSkillTests();
 
     //get specific skill tests
-    SkillTest getSpecificSkillTests(int testId);
+    SkillTest getSpecificSkillTest(int testId);
 
     //on pass, put that they passed
     int placePassingApplicant(int testId, int individualId);

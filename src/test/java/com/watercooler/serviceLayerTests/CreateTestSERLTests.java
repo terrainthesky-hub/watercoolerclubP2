@@ -3,6 +3,7 @@ package com.watercooler.serviceLayerTests;
 import com.watercooler.saos.CreateTestSAOImp;
 import com.watercooler.daos.CreateTestDAOImp;
 
+import com.watercooler.utilities.customExceptions.EmptyField;
 import com.watercooler.utilities.customExceptions.InputTooLong;
 import com.watercooler.entities.SkillTest;
 import com.watercooler.entities.OversizedText;
@@ -85,6 +86,17 @@ public class CreateTestSERLTests {
             Assert.fail();
         } catch (InputTooLong exception) {
             Assert.assertEquals(exception, "Inputted third answer is too long.");
+        }
+    }
+
+    @Test
+    public void validateNoDataInputed() {
+        SkillTest skillTest = new SkillTest(-2, "test", "test", "test", "test", "test", "", -2);
+        try {
+            createTestSAO.createSkillTestService(skillTest);
+            Assert.fail();
+        } catch (EmptyField exception) {
+            Assert.assertEquals(exception, "All fields must be filled.");
         }
     }
 

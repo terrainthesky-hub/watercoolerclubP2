@@ -17,7 +17,7 @@ public class SkillTestDALTests {
 
     @Test
     public void getSpecificTestSuccess() {
-        SkillTest resultTest = skillTestDataImp.getSpecificSkillTests(-1);
+        SkillTest resultTest = skillTestDataImp.getSpecificSkillTest(-1);
         String resultTestQuestionOne = resultTest.getQuestionOne();
         Assert.assertEquals(resultTestQuestionOne, "test");
     }
