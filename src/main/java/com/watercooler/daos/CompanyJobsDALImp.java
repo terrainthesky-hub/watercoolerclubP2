@@ -63,7 +63,7 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
     @Override
     public List<Applicant> viewApplicants(int jobId){
         try (Connection connection = DatabaseConnection.createConnection()){
-            String sql = "select * from applied_jobs where job_id=?;";
+            String sql = "select * from applicant_table Left Join applied_jobs on job_id=?;";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, jobId);
             ResultSet rs = ps.executeQuery();
