@@ -1,6 +1,6 @@
 package com.watercooler.utilities.customExceptions;
 
-public class NoApplicants extends Exception{
+public class NoApplicants extends RuntimeException{
 
     NoApplicants(String message){
         super(message);

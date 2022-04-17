@@ -13,6 +13,8 @@ public class CompanyJobsSALTests {
     CompanyJobsDALImp jobsDAO = new CompanyJobsDALImp();
     CompanyJobsSALImp jobsSAO = new CompanyJobsSALImp(jobsDAO);
 
+    // need to write tests for empty fields
+
     @Test
     public void servicePostJobSuccess(){
         Job testJob = new Job(1, "testTitle", "management", "testDescription", -1, "testLocation", "testName");
@@ -29,11 +31,21 @@ public class CompanyJobsSALTests {
     };
 
     @Test
+    public void servicePostJobTypeTooLong(){
+        Job testJob = new Job(1, "testTitle", "thisiswaytoolongtopassintothedatabase", "testDescription", -1, "testLocation", "testName");
+        Job result = jobsSAO.servicePostJob(testJob);
+        Assert.assertNotEquals(result, false, "Job type is too long!");
+
+    };
+
+    @Test
     public void servicePostJobDescriptionTooLong(){
         Job testJob = new Job(1, "testTitle", "management", "thisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabasethisiswaytoolongtopassintothedatabase", -1, "testLocation", "testName");
         Job result = jobsSAO.servicePostJob(testJob);
         Assert.assertNotEquals(result, false, "Job description is too long!");
     };
+
+    // need to write test for company id being anything other than an int and implement
 
     @Test
     public void servicePostJobLocationTooLong(){
