@@ -1,15 +1,30 @@
-package com.watercooler.daos;
-
-import com.watercooler.entities.Job;
-import com.watercooler.utilities.DatabaseConnection;
-
-import java.sql.*;
-import java.util.ArrayList;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+import com.watercooler.daos.JobSearchDAOImp;
 import java.util.List;
 
-public class JobSearchDAOImp implements JobSearchDAOInt{
 
-    @Override
+
+
+public class JobSearchDAOTests {
+
+    JobSearchDAOImp jobSearchDAO = new JobSearchImp();
+
+    @Test
+    public void selectJob(String jobLocation, String jobType) {
+        List<Job> jobList = jobSearchDAO.selectJob('testTitle2', 'testLocation2');
+        Assert.assertNotEquals(jobList.size(), 0);
+
+    }
+
+
+
+
+
+
+
+
+
     public List<Job> selectJob(String jobLocation, String jobType) {
         try(Connection connection = DatabaseConnection.createConnection()){
             String append = "";
@@ -42,7 +57,7 @@ public class JobSearchDAOImp implements JobSearchDAOInt{
         } catch(SQLException e){
             e.printStackTrace();
             return null;
-        }
-    }
-}
 
+
+
+}
