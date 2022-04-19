@@ -5,6 +5,8 @@ import com.watercooler.entities.Applicant;
 import com.watercooler.entities.Job;
 import com.watercooler.utilities.customExceptions.EmptyInput;
 import com.watercooler.utilities.customExceptions.InputTooLong;
+import com.watercooler.utilities.customExceptions.NoApplicants;
+import com.watercooler.utilities.customExceptions.NoJobFound;
 
 import java.util.List;
 
@@ -38,16 +40,31 @@ public class CompanyJobsSALImp implements CompanyJobsSAL{
 
     @Override
     public List<Job> serviceViewJobs(int companyId) {
-        return null;
+        List<Job> returningJobs = jobsDAO.viewJobs(companyId);
+        if(returningJobs.isEmpty()){
+            throw new NoJobFound("There are no posted jobs with the company ID provided!");
+        }else{
+            return returningJobs;
+        }
     }
 
     @Override
     public List<Applicant> serviceViewApplicants(int jobId) {
-        return null;
+        List<Applicant> returningApplicants = jobsDAO.viewApplicants(jobId);
+        if(returningApplicants != null){
+            return returningApplicants;
+        } else {
+            throw new NoApplicants("There are no applicants for the job ID provided!");
+        }
     }
 
     @Override
     public int serviceDeleteJobs(int jobId) {
-        return 0;
+        int result = jobsDAO.deleteJobs(jobId);
+        if (result == 0){
+            throw new NoJobFound("There are no posted jobs with the company ID provided!");
+        } else {
+            return 1;
+        }
     }
 }
