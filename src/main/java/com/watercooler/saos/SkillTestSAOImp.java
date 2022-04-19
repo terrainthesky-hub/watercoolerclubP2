@@ -17,7 +17,7 @@ public class SkillTestSAOImp implements SkillTestSAOInt {
     @Override
     public HashMap<Integer, String> getAllSkillTests() {
         List<SkillTest> resultList = daoImp.getAllSkillTests();
-        HashMap<Integer, String> resultMap = null;
+        HashMap<Integer, String> resultMap = new HashMap<Integer, String>();
         for (int i = 0; i < resultList.size(); i++) {
             SkillTest currentTest = resultList.get(i);
             resultMap.put(currentTest.getTestId(), currentTest.getQuestionOne());

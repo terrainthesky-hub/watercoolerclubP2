@@ -23,7 +23,7 @@ async function submitSkillTest() {
         body: JSON.stringify(skillTest)
     };
 
-    const submit = await fetch("api goes here", config);
+    const submit = await fetch("http://localhost:8080//skilltest/new", config);
     if (submit.status == 200) {
         alert("Skill test created successfully!");
         toLandingPage();
