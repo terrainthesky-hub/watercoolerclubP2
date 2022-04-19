@@ -74,7 +74,8 @@ public class CompanyJobsSALTests {
 
     @Test(expectedExceptions = NoJobFound.class, expectedExceptionsMessageRegExp = "There are no posted jobs with the company ID provided!")
     public void serviceViewPostedJobsNoPostedJobs(){
-        jobsSAO.serviceViewJobs(-100000000);
+        jobsSAO.serviceViewJobs(-1000000000);
+        Assert.fail();
     };
 
     @Test
@@ -85,7 +86,8 @@ public class CompanyJobsSALTests {
 
     @Test(expectedExceptions = NoApplicants.class, expectedExceptionsMessageRegExp = "There are no applicants for the job ID provided!")
     public void serviceViewApplicantsNoJobToViewApplicants(){
-        jobsSAO.serviceViewApplicants(-1);
+        jobsSAO.serviceViewApplicants(-1000000000);
+        Assert.fail();
     };
 
     @Test

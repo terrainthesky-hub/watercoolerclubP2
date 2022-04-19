@@ -3,6 +3,7 @@ package com.watercooler.daos;
 import com.watercooler.entities.Applicant;
 import com.watercooler.entities.Job;
 import com.watercooler.utilities.DatabaseConnection;
+import com.watercooler.utilities.customExceptions.NoJobFound;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -81,7 +82,11 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
                 );
                 applicants.add(applicant);
             }
-            return applicants;
+            if (applicants.size() == 0){
+                throw new NoJobFound("There are no applicants for the job ID provided!");
+            } else {
+                return applicants;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
