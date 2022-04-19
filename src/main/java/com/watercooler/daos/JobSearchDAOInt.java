@@ -6,5 +6,10 @@ public interface JobSearchDAOInt{
 
     List<Job> selectJob(String jobLocation, String jobType);
 
+    int insertAppliedJobs(int jobId, int applicantId);
+
+    int viewAppliedJobs (int applicantId);
+
+
 }
 

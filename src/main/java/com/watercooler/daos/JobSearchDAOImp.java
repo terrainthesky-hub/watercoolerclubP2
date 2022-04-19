@@ -7,20 +7,20 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobSearchDAOImp implements JobSearchDAOInt{
+public class JobSearchDAOImp implements JobSearchDAOInt {
 
     @Override
     public List<Job> selectJob(String jobLocation, String jobType) {
 
-        try(Connection connection = DatabaseConnection.createConnection()){
+        try (Connection connection = DatabaseConnection.createConnection()) {
             String append = "";
             if (jobLocation.equals("nothing") && !jobType.equals("nothing")) {
                 append = " where job_type = " + "'" + jobType + "'";
-            } else if (!jobLocation.equals("nothing") && jobType.equals("nothing")){
+            } else if (!jobLocation.equals("nothing") && jobType.equals("nothing")) {
                 append = " where job_location = " + "'" + jobLocation + "'";
-            } else if (!jobLocation.equals("nothing") && !jobType.equals("nothing")){
+            } else if (!jobLocation.equals("nothing") && !jobType.equals("nothing")) {
                 append = " where job_location = " + "'" + jobLocation + "'" + " and job_type = " + "'" + jobType + "'";
-            } else if (jobLocation.equals("nothing") && jobType.equals("nothing")){
+            } else if (jobLocation.equals("nothing") && jobType.equals("nothing")) {
                 append = ""; // should be better way to do this
             }
 
@@ -33,7 +33,7 @@ public class JobSearchDAOImp implements JobSearchDAOInt{
             s.execute(sql);
             ResultSet rs = s.getResultSet();
             List<Job> joblist = new ArrayList<>();
-            while(rs.next()){
+            while (rs.next()) {
                 Job job = new Job(
                         rs.getInt("job_id"),
                         rs.getString("job_title"),
@@ -47,15 +47,70 @@ public class JobSearchDAOImp implements JobSearchDAOInt{
             }
             //rs.next();
             return joblist;
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
-    public static void main(String[] args){
-        JobSearchDAOImp JSDI = new  JobSearchDAOImp();
-        List<Job> result = JSDI.selectJob("nothing","Technology");
+
+    public static void main(String[] args) {
+        JobSearchDAOImp JSDI = new JobSearchDAOImp();
+        List<Job> result = JSDI.selectJob("nothing", "Technology");
         System.out.println(result.toString());
     }
+
+    @Override
+    public int insertAppliedJobs(int jobId, int applicantId) {
+        try (Connection connection = DatabaseConnection.createConnection()) {
+            String sql = "insert into applied_jobs values(?, ?)";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, jobId);
+            ps.setInt(2, applicantId);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    @Override
+    public int viewAppliedJobs(int applicantId) {
+        try (Connection connection = DatabaseConnection.createConnection()) {
+            String sql = "view applied_jobs values(?)";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(2, applicantId);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 }
 
+
+
+
+
+
+
+
+
+
+//    try(Connection connection = DatabaseConnection.createConnection()){
+//        Int append = "";
+//        Int sql = "select jobId from job_table" + append applied_jobs_table;
+//        Int sql = "select applicantId from applicant_table" + append applied_jobs_table
+//        System.out.println(sql);
+//        Statement s = connection.createStatement();
+//        s.execute(sql);
+//        ResultSet rs = s.getResultSet();
+//        List<Job> appliedjobs = new ArrayList<>();
+//        return appliedjobs;
+//    } catch(SQLException e){
+//        e.printStackTrace();
+//        return null;
+//    }
+//
+//}
+//
