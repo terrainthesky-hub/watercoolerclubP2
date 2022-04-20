@@ -11,7 +11,8 @@ import io.javalin.http.Handler;
 import java.util.List;
 
 public class ManagingJobsController {
-    private CompanyJobsSALImp SAO;
+    CompanyJobsDALImp DAO = new CompanyJobsDALImp();
+    CompanyJobsSALImp SAO = new CompanyJobsSALImp(DAO);
 
     public Handler createJobPost = ctx -> {
         String requestBody = ctx.body();
@@ -48,5 +49,12 @@ public class ManagingJobsController {
         }
     };
 
-    //public Handler deleteJobPost =
+    public Handler deleteJobPost = ctx -> {
+        String requestBody = ctx.body();
+        Gson gson = new Gson();
+        int jobId = gson.fromJson(requestBody, Integer.class);
+        SAO.serviceDeleteJobs(jobId);
+        ctx.result("Job post successfully removed.");
+        ctx.status(200);
+    };
 }

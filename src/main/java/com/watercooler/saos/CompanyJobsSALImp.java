@@ -41,7 +41,7 @@ public class CompanyJobsSALImp implements CompanyJobsSAL{
     @Override
     public List<Job> serviceViewJobs(int companyId) {
         List<Job> returningJobs = jobsDAO.viewJobs(companyId);
-        if(returningJobs.isEmpty()){
+        if(returningJobs == null){
             throw new NoJobFound("There are no posted jobs with the company ID provided!");
         }else{
             return returningJobs;
