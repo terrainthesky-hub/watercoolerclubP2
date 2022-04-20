@@ -4,7 +4,7 @@ const individualIdInput = document.getElementById("comp-id");
 const companyIdInput = document.getElementById("ind-id");
 
 function toViewAllTestsPage() {
-    window.sessionStorage.setItme("individual-id", individualIdInput.value);
+    window.sessionStorage.setItem("individual-id", individualIdInput.value);
     window.location.href = "view-skill-tests.html"
 }
 
