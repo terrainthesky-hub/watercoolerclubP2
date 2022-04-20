@@ -15,18 +15,21 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
     public Job postJob(Job job){
         try (Connection connection = DatabaseConnection.createConnection()){
             String sql = "insert into job_table values (?, ?, ?, ?, ?, ?, ?);";
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, job.getJobId());
-            ps.setString(2, job.getTitle());
-            ps.setString(3, job.getType());
-            ps.setString(4, job.getDescription());
-            ps.setInt(5, job.getCompanyId());
-            ps.setString(6, job.getLocation());
-            ps.setString(7, job.getCompanyName());
-            ps.execute();
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            job.setJobId(rs.getInt("job_id"));
+            PreparedStatement ps = null;
+            if (connection != null) {
+                ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.setInt(1, job.getJobId());
+                ps.setString(2, job.getTitle());
+                ps.setString(3, job.getType());
+                ps.setString(4, job.getDescription());
+                ps.setInt(5, job.getCompanyId());
+                ps.setString(6, job.getLocation());
+                ps.setString(7, job.getCompanyName());
+                ps.execute();
+                ResultSet rs = ps.getGeneratedKeys();
+                rs.next();
+                job.setJobId(rs.getInt("job_id"));
+            }
             return job;
         } catch (SQLException e) {
             e.printStackTrace();
