@@ -5,7 +5,8 @@ const companyIdInput = document.getElementById("ind-id");
 
 function toViewAllTestsPage() {
     window.sessionStorage.setItem("individual-id", individualIdInput.value);
-    window.location.href = "view-skill-tests.html"
+    console.log(window.sessionStorage.getItem("individual-id"));
+    //window.location.href = "view-skill-tests.html"
 }
 
 function toCreateSkillTestPage() {
