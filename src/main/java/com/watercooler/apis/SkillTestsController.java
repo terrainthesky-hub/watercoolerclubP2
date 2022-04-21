@@ -55,7 +55,7 @@ public class SkillTestsController {
         int applicantId = Integer.parseInt(ctx.pathParam("applicantId"));
         try {
             skillTestSAO.placePassingApplicant(testId, applicantId);
-            ctx.result("{\"message\": \"You passed the test!\"");
+            ctx.result("{\"message\": \"You passed the test!\"}");
             ctx.status(201);
             logger.info("FINISH API Handler postTestResult with result:\nYou passed the test!\nStatus Code: " + 201);
         } catch (DatabaseError exception) {

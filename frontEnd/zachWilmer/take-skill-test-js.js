@@ -40,11 +40,11 @@ async function submitTest() {
         let response = await fetch(requestURL, {method:"POST"});
         if (response.status == 200) {
             const data = await response.json();
-            alert(data)
+            alert(data["message"])
             window.location.href = "view-skill-tests.html";
         } else {
             const data = await response.json();
-            alert(data)
+            alert(data["errorMessage"])
         }
     } else {
         alert("You did not pass the test.");

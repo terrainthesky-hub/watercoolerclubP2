@@ -2,7 +2,6 @@ const returnButton = document.getElementById("return-button");
 const testTable = document.getElementById("view-tests-table");
 
 async function requestInformation() {
-    console.log(window.sessionStorage.getItem("individual-id"));
     let requestURL = "http://localhost:8080/skilltest"
     let response = await fetch(requestURL, {method:"GET"});
     if (response.status == 200) {
