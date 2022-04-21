@@ -72,18 +72,20 @@ public class CompanyJobsSALTests {
         Assert.assertTrue(testJobList.size() >= 1);
     };
 
+    // will not return error message, instead list returns null or empty. high priority bug, low severity.
     @Test(expectedExceptions = NoJobFound.class, expectedExceptionsMessageRegExp = "There are no posted jobs with the company ID provided!")
     public void serviceViewPostedJobsNoPostedJobs(){
         jobsSAO.serviceViewJobs(-1000000000);
         Assert.fail();
     };
 
-    @Test
+    @Test // pulls all the applicants regardless of the job applied to. high priority bug, high severity.
     public void serviceViewApplicantsSuccess(){
         List<Applicant> applicants = jobsSAO.serviceViewApplicants(0);
         Assert.assertTrue(applicants.size() >= 1);
     };
 
+    // will not return error message, instead list returns null. high priority bug, low severity.
     @Test(expectedExceptions = NoApplicants.class, expectedExceptionsMessageRegExp = "There are no applicants for the job ID provided!")
     public void serviceViewApplicantsNoJobToViewApplicants(){
         jobsSAO.serviceViewApplicants(-1000000000);

@@ -35,10 +35,10 @@ public class ManagingJobsController {
         try {
             String requestBody = ctx.body();
             Gson gson = new Gson();
-            int companyId = gson.fromJson(requestBody, Integer.class);
-            List<Job> jobs = SAO.serviceViewJobs(companyId);
+            Job companyId = gson.fromJson(requestBody, Job.class);
+            List<Job> jobs = SAO.serviceViewJobs(companyId.getCompanyId());
             for (Job job : jobs) {
-                if (job.getCompanyId() == companyId) {
+                if (job.getCompanyId() == companyId.getCompanyId()) {
                     String jobJSON = gson.toJson(job);
                     ctx.result(jobJSON);
                     ctx.status(200);
@@ -54,8 +54,8 @@ public class ManagingJobsController {
         try {
             String requestBody = ctx.body();
             Gson gson = new Gson();
-            int jobId = gson.fromJson(requestBody, Integer.class);
-            List<Applicant> applicants = SAO.serviceViewApplicants(jobId);
+            Job jobId = gson.fromJson(requestBody, Job.class);
+            List<Applicant> applicants = SAO.serviceViewApplicants(jobId.getJobId());
             for (Applicant applicant : applicants) {
                 String applicantJSON = gson.toJson(applicant);
                 ctx.result(applicantJSON);
@@ -71,8 +71,8 @@ public class ManagingJobsController {
         try {
             String requestBody = ctx.body();
             Gson gson = new Gson();
-            int jobId = gson.fromJson(requestBody, Integer.class);
-            SAO.serviceDeleteJobs(jobId);
+            Job jobId = gson.fromJson(requestBody, Job.class);
+            SAO.serviceDeleteJobs(jobId.getJobId());
             ctx.result("Job post successfully removed.");
             ctx.status(200);
         } catch (NoJobFound exception){
