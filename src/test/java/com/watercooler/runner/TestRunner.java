@@ -1,5 +1,9 @@
 package com.watercooler.runner;
 
+import com.watercooler.poms.CreateSkillTestHome;
+import com.watercooler.poms.TakeSkillTestHome;
+import com.watercooler.poms.TestsLandingPageHome;
+import com.watercooler.poms.ViewSkillTestsHome;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.BeforeClass;
@@ -23,7 +27,10 @@ import java.time.Duration;
 public class TestRunner {
     public static WebDriver driver;
 
-    //set poms variables
+    public static TestsLandingPageHome landingPage;
+    public static ViewSkillTestsHome viewSkillTests;
+    public static TakeSkillTestHome takeSkillTest;
+    public static CreateSkillTestHome createSkillTest;
 
     @BeforeClass
     public static void setup() {
@@ -31,7 +38,10 @@ public class TestRunner {
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
 
-        //pass driver into poms
+        landingPage = new TestsLandingPageHome(driver);
+        viewSkillTests = new ViewSkillTestsHome(driver);
+        takeSkillTest = new TakeSkillTestHome(driver);
+        createSkillTest = new CreateSkillTestHome(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
     }
