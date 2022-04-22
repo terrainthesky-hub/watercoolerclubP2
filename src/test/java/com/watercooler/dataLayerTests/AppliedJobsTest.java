@@ -19,8 +19,8 @@ public class AppliedJobsTest {
 
     @Test
     public void viewAppliedJobs() {
-        int appliedJobs = jobSearchDAO.viewAppliedJobs(-1);
-        Assert.assertNotEquals(appliedJobs, 0);
+        List<Job> appliedJobs = jobSearchDAO.viewAppliedJobs(-1);
+        Assert.assertNotEquals(appliedJobs.toArray().length, 0);
 
     }
 }

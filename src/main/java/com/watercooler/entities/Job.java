@@ -108,4 +108,7 @@ Job {
                 ", companyName='" + companyName + '\'' +
                 '}';
     }
+
+    public Job selectJob() {
+    }
 }

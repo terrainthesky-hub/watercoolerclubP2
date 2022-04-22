@@ -53,11 +53,7 @@ public class JobSearchDAOImp implements JobSearchDAOInt {
         }
     }
 
-    public static void main(String[] args) {
-        JobSearchDAOImp JSDI = new JobSearchDAOImp();
-        List<Job> result = JSDI.selectJob("nothing", "Technology");
-        System.out.println(result.toString());
-    }
+
 
     @Override
     public int insertAppliedJobs(int jobId, int applicantId) {
@@ -74,19 +70,49 @@ public class JobSearchDAOImp implements JobSearchDAOInt {
     }
 
     @Override
-    public int viewAppliedJobs(int applicantId) {
+    public List<Job> viewAppliedJobs(int applicantId) {
+
         try (Connection connection = DatabaseConnection.createConnection()) {
-            String sql = "view applied_jobs values(?)";
+            String sql = "select * from applied_jobs join job_table on applied_jobs.job_id = job_table.job_id where applicant_id = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(2, applicantId);
-            return ps.executeUpdate();
+            ps.setInt(1, applicantId);
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            List<Job> joblist = new ArrayList<>();
+
+            while (rs.next()) {
+                Job job = new Job(
+                        rs.getInt("job_id"),
+                        rs.getString("job_title"),
+                        rs.getString("job_type"),
+                        rs.getString("job_description"),
+                        rs.getInt("company_id"),
+                        rs.getString("job_location"),
+                        rs.getString("company_name")
+                );
+                joblist.add(job);
+            }
+            //rs.next();
+            return joblist;
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
+    public static void main(String[] args) {
+        JobSearchDAOImp JSDI = new JobSearchDAOImp();
+        List<Job> result = JSDI.viewAppliedJobs(-1);
+        System.out.println(result.toArray().length);
 
-}
+    }
+
+
+    }
+
+
+
+
+
 
 
 

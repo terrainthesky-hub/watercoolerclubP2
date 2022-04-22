@@ -8,7 +8,7 @@ public interface JobSearchDAOInt{
 
     int insertAppliedJobs(int jobId, int applicantId);
 
-    int viewAppliedJobs (int applicantId);
+    List<Job> viewAppliedJobs (int applicantId);
 
 
 }
