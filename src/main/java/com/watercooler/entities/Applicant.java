@@ -6,23 +6,23 @@ public class Applicant {
     private int id;
     private String firstName;
     private String lastName;
-    private long phoneNumber;
+    private String phoneNumber;
     private String email;
+    private String workHistory;
     private String references;
     private String education;
+    private String desiredJob;
 
-    Applicant() {
-
-    }
-
-    Applicant(int id, String firstName, String lastName, long phoneNumber, String email, String workHistory, String references, String education) {
+    public Applicant(int id, String firstName, String lastName, String phoneNumber, String email, String workHistory, String references, String education, String desiredJob) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.workHistory = workHistory;
         this.references = references;
         this.education = education;
+        this.desiredJob = desiredJob;
     }
 
     public int getId() {
@@ -49,11 +49,11 @@ public class Applicant {
         this.lastName = lastName;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -63,6 +63,14 @@ public class Applicant {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getWorkHistory() {
+        return workHistory;
+    }
+
+    public void setWorkHistory(String workHistory) {
+        this.workHistory = workHistory;
     }
 
     public String getReferences() {
@@ -81,17 +89,25 @@ public class Applicant {
         this.education = education;
     }
 
+    public String getDesiredJob() {
+        return desiredJob;
+    }
+
+    public void setDesiredJob(String desiredJob) {
+        this.desiredJob = desiredJob;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Applicant applicant = (Applicant) o;
-        return id == applicant.id && phoneNumber == applicant.phoneNumber && Objects.equals(firstName, applicant.firstName) && Objects.equals(lastName, applicant.lastName) && Objects.equals(email, applicant.email) && Objects.equals(references, applicant.references) && Objects.equals(education, applicant.education);
+        return id == applicant.id && firstName.equals(applicant.firstName) && lastName.equals(applicant.lastName) && phoneNumber.equals(applicant.phoneNumber) && email.equals(applicant.email) && workHistory.equals(applicant.workHistory) && references.equals(applicant.references) && education.equals(applicant.education) && desiredJob.equals(applicant.desiredJob);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, phoneNumber, email, references, education);
+        return Objects.hash(id, firstName, lastName, phoneNumber, email, workHistory, references, education, desiredJob);
     }
 
     @Override
@@ -100,10 +116,12 @@ public class Applicant {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", phoneNumber=" + phoneNumber +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
+                ", workHistory='" + workHistory + '\'' +
                 ", references='" + references + '\'' +
                 ", education='" + education + '\'' +
+                ", desiredJob='" + desiredJob + '\'' +
                 '}';
     }
 }
