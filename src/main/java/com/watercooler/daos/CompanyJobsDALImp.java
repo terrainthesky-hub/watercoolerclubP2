@@ -1,18 +1,21 @@
 package com.watercooler.daos;
-
 import com.watercooler.entities.Applicant;
 import com.watercooler.entities.Job;
 import com.watercooler.utilities.DatabaseConnection;
 import com.watercooler.utilities.customExceptions.NoJobFound;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CompanyJobsDALImp  implements CompanyJobsDAL {
 
+    public static Logger logger = LogManager.getLogger(CompanyJobsDALImp.class);
+
     @Override
     public Job postJob(Job job){
+        logger.info("Begining DAL function createJobPost with data: /n" + job);
         try (Connection connection = DatabaseConnection.createConnection()){
             String sql = "insert into job_table values (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = null;
@@ -30,15 +33,18 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
                 rs.next();
                 job.setJobId(rs.getInt("job_id"));
             }
+            logger.info("Finishing DAL function createJobPost with result: /n" + job);
             return job;
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            logger.error("Error with DAL function createJobPost with error: " + exception.getMessage());
             return null;
         }
     };
 
     @Override
     public List<Job> viewJobs(int companyId){
+        logger.info("Begining DAL function viewJobs with data: /n" + companyId);
         try (Connection connection = DatabaseConnection.createConnection()){
             String sql = "select * from job_table where company_id=?";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -57,15 +63,18 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
                 );
                 testJobs.add(job);
             }
+            logger.info("Finishing DAL function viewJobs with result: /n" + testJobs);
             return testJobs;
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            logger.error("Error with DAL function viewJobs with error: " + exception.getMessage());
             return null;
         }
     };
 
     @Override
     public List<Applicant> viewApplicants(int jobId){
+        logger.info("Starting DAL function viewApplicants with data: " + jobId);
         try (Connection connection = DatabaseConnection.createConnection()){
             String sql = "select * from applicant_table Left Join applied_jobs on job_id=?;";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -86,25 +95,32 @@ public class CompanyJobsDALImp  implements CompanyJobsDAL {
                 applicants.add(applicant);
             }
             if (applicants.size() == 0){
+                logger.warn("Error with DAL function viewApplicants with error: Applicants list size = 0");
                 throw new NoJobFound("There are no applicants for the job ID provided!");
             } else {
+                logger.info("Finishing DAL function viewApplicants with result: " + applicants);
                 return applicants;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            logger.error("Error with DAL function viewApplicants with error: " + exception.getMessage());
             return null;
         }
     };
 
     @Override
     public int deleteJobs(int jobId){
+        logger.info("Begining DAL function deleteJobs with data: " + jobId);
         try (Connection connection = DatabaseConnection.createConnection()){
             String sql = "delete from job_table where job_id=?;";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, jobId);
-            return ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            int result = ps.executeUpdate();
+            logger.info("Finishing DAL function deleteJobs with result: " + result);
+            return result;
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            logger.error("Error with DAL function deleteJobs with error: " + exception.getMessage());
             return 0;
         }
     };
