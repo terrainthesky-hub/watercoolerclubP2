@@ -26,8 +26,7 @@ public class CompanySAOImp implements CompanySAOSInterface{
             throw new CustomUncheckedException("Work descriptions cannot exceed 500 characters");
         } else if (company.getRelatedJobs().length() > 800) {
             throw new CustomUncheckedException("Work reference descriptions exceed 800 characters");
-        } else if (company.getName().length() > 200) {
-            throw new CustomUncheckedException("Education descriptions cannot exceed 200 characters");
+
         }
 
         return 0;
