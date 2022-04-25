@@ -4,7 +4,10 @@ import com.watercooler.entities.UsernamePasswordApplicant;
 
 public interface UsernamePasswordApplicantSAOInterface {
 
-    UsernamePasswordApplicant createAccountApplicant(UsernamePasswordApplicant createdApplicant);
+    UsernamePasswordApplicant catchErrorsAccountApplicant(UsernamePasswordApplicant checkApplicant);
 
     UsernamePasswordApplicant selectApplicantById(int id);
+
+    int catchErrorsUnPwApplicant(UsernamePasswordApplicant checkApplicant);
+
 }

@@ -1,51 +1,59 @@
 package com.watercooler.saos;
 
-import com.watercooler.entities.UsernamePasswordApplicant;
+import com.watercooler.daos.UsernamePasswordCompanyDAOImp;
+import com.watercooler.daos.UsernamePasswordCompanyDAOInterface;
 import com.watercooler.entities.UsernamePasswordCompany;
-import com.watercooler.utilities.DatabaseConnection;
+import com.watercooler.utilities.CustomUncheckedException;
 
-import java.sql.*;
+public class UsernamePasswordCompanySAOImp implements UsernamePasswordCompanySAOInterface {
+    public UsernamePasswordCompanyDAOInterface usernamePasswordCompanyDAOImp;
 
-public class UsernamePasswordCompanySAOImp implements UsernamePasswordCompanySAOInterface{
+    public UsernamePasswordCompanySAOImp(UsernamePasswordCompanyDAOInterface usernamePasswordCompanyDAOImp) {
+        this.usernamePasswordCompanyDAOImp = usernamePasswordCompanyDAOImp;
+    }
 
-
-
+    UsernamePasswordCompanyDAOInterface DAO = new UsernamePasswordCompanyDAOImp();
 
     @Override
-    public UsernamePasswordCompany createAccountCompany(UsernamePasswordCompany createCompany) {
-        try(Connection connection = DatabaseConnection.createConnection()){
-            String sql = "insert into usernames_passwords_company values(default, ?, ?)";
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, createCompany.getCompanyUsername());
-            ps.setString(2, createCompany.getCompanyPassword());
-            ps.execute();
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            createCompany.setCompanyId(rs.getInt("company_id"));
-            return createCompany;
-        } catch(SQLException e){
-            e.printStackTrace();
-            return null;
+    public UsernamePasswordCompany catchErrorsUsernamePasswordCompany(UsernamePasswordCompany checkCompany) {
+        if (checkCompany.getCompanyUsername().length() > 25) {
+            throw new CustomUncheckedException("Username needs to be less than 25 characters");
+        } else if (checkCompany.getCompanyPassword().length() > 25) {
+            throw new CustomUncheckedException("Password needs to be less than 25 characters");
+        } else if (checkCompany.getCompanyUsername().length() <= 5) {
+            throw new CustomUncheckedException("Username needs to be at least 5 characters");
+        } else if (checkCompany.getCompanyPassword().length() <= 5) {
+            throw new CustomUncheckedException("Password needs to be at least 5 characters");
+        } else {
+            return DAO.createAccountCompany(checkCompany);
         }
     }
 
     @Override
-    public UsernamePasswordCompany selectCompanyAccountById(int id) {
-        try(Connection connection = DatabaseConnection.createConnection()){
-            String sql = "select * from usernames_passwords_company where company_id = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1,id);
-            ResultSet rs = ps.executeQuery(); // executeQuery returns a result set object with the results
-            rs.next();
-            UsernamePasswordCompany usernamePasswordCompany = new UsernamePasswordCompany(
-                    rs.getInt("company_id"),
-                    rs.getString("company_username"),
-                    rs.getString("company_password")
-            );
-            return usernamePasswordCompany;
-        } catch(SQLException e){
-            e.printStackTrace();
-            return null;
+    public UsernamePasswordCompany selectCompanyById(int id) {
+        return DAO.selectCompanyAccountById(id);
+    }
+
+
+    @Override
+    public int catchErrorsUnPwCompany(UsernamePasswordCompany checkCompany) {
+        if (checkCompany.getCompanyUsername().length() > 25) {
+            throw new CustomUncheckedException("Username needs to be less than 25 characters");
+        } else if (checkCompany.getCompanyPassword().length() > 25) {
+            throw new CustomUncheckedException("Password needs to be less than 25 characters");
+        } else if (checkCompany.getCompanyUsername().length() <= 5) {
+            throw new CustomUncheckedException("Username needs to be at least 5 characters");
+        } else if (checkCompany.getCompanyPassword().length() <= 5) {
+            throw new CustomUncheckedException("Password needs to be at least 5 characters");
+        } else {
+            return DAO.verifyUsernamePasswordCompany(checkCompany);
+//            if(result == 0){
+//                return 0;
+//            } else {
+//                return result;
+//            }
         }
     }
 }
+
+

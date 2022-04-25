@@ -1,10 +1,13 @@
 package com.watercooler.saos;
 
+import com.watercooler.entities.UsernamePasswordApplicant;
 import com.watercooler.entities.UsernamePasswordCompany;
 
 public interface UsernamePasswordCompanySAOInterface {
 
-    UsernamePasswordCompany createAccountCompany(UsernamePasswordCompany createCompany);
+    UsernamePasswordCompany catchErrorsUsernamePasswordCompany(UsernamePasswordCompany checkCompany);
 
-    UsernamePasswordCompany selectCompanyAccountById(int id);
+    UsernamePasswordCompany selectCompanyById(int id);
+
+    int catchErrorsUnPwCompany(UsernamePasswordCompany checkCompany);
 }

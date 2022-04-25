@@ -1,49 +1,54 @@
 package com.watercooler.saos;
 
+import com.watercooler.daos.UsernamePasswordApplicantDAOImp;
+import com.watercooler.daos.UsernamePasswordApplicantDAOInterface;
 import com.watercooler.entities.UsernamePasswordApplicant;
-import com.watercooler.utilities.DatabaseConnection;
-
-import java.sql.*;
-import java.util.List;
+import com.watercooler.entities.UsernamePasswordCompany;
+import com.watercooler.utilities.CustomUncheckedException;
 
 public class UsernamePasswordApplicantSAOImp implements UsernamePasswordApplicantSAOInterface {
 
+    public UsernamePasswordApplicantDAOInterface usernamePasswordApplicantDAOImp;
+
+    public UsernamePasswordApplicantSAOImp(UsernamePasswordApplicantDAOInterface usernamePasswordApplicantDAOImp) {this.usernamePasswordApplicantDAOImp = usernamePasswordApplicantDAOImp;}
+
+//    UsernamePasswordApplicantDAOInterface DAO = new UsernamePasswordApplicantDAOImp();
+
     @Override
-    public UsernamePasswordApplicant createAccountApplicant(UsernamePasswordApplicant createdApplicant) {
-        try(Connection connection = DatabaseConnection.createConnection()){
-            String sql = "insert into usernames_passwords_applicant values(default, ?, ?)";
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, createdApplicant.getApplicantUsername());
-            ps.setString(2, createdApplicant.getApplicantPassword());
-            ps.execute();
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            createdApplicant.setApplicantId(rs.getInt("applicant_id"));
-            return createdApplicant;
-        } catch(SQLException e){
-            e.printStackTrace();
-            return null;
+    public UsernamePasswordApplicant catchErrorsAccountApplicant(UsernamePasswordApplicant checkApplicant) {
+            if (checkApplicant.getApplicantUsername().length() > 25) {
+                throw new CustomUncheckedException("Username needs to be less than 25 characters");
+            } else if (checkApplicant.getApplicantPassword().length() > 25) {
+                throw new CustomUncheckedException("Password needs to be less than 25 characters");
+            } else if (checkApplicant.getApplicantUsername().length() <= 5) {
+            throw new CustomUncheckedException("Username needs to be at least 5 characters");
+            } else if (checkApplicant.getApplicantPassword().length() <= 5) {
+              throw new CustomUncheckedException("Password needs to be at least 5 characters");
+        } else {
+                return this.usernamePasswordApplicantDAOImp.createAccountApplicant(checkApplicant);
+            }
         }
+
+
+    @Override
+    public UsernamePasswordApplicant selectApplicantById(int id){
+        return this.usernamePasswordApplicantDAOImp.selectApplicantById(id);
     }
 
     @Override
-    public UsernamePasswordApplicant selectApplicantById(int id) {
-        try(Connection connection = DatabaseConnection.createConnection()){
-            String sql = "select * from usernames_passwords_applicant where applicant_id = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1,id);
-            ResultSet rs = ps.executeQuery(); // executeQuery returns a result set object with the results
-            rs.next();
-            UsernamePasswordApplicant usernamePasswordApplicant = new UsernamePasswordApplicant(
-                    rs.getInt("applicant_id"),
-                    rs.getString("applicant_username"),
-                    rs.getString("applicant_password")
-            );
-            return usernamePasswordApplicant;
-        } catch(SQLException e){
-            e.printStackTrace();
-            return null;
+    public int catchErrorsUnPwApplicant(UsernamePasswordApplicant checkApplicant) {
+        if (checkApplicant.getApplicantUsername().length() > 25) {
+            throw new CustomUncheckedException("Username needs to be less than 25 characters");
+        } else if (checkApplicant.getApplicantPassword().length() > 25) {
+            throw new CustomUncheckedException("Password needs to be less than 25 characters");
+        } else if (checkApplicant.getApplicantUsername().length() <= 5) {
+            throw new CustomUncheckedException("Username needs to be at least 5 characters");
+        } else if (checkApplicant.getApplicantPassword().length() <= 5) {
+            throw new CustomUncheckedException("Password needs to be at least 5 characters");
+        } else {
+            return usernamePasswordApplicantDAOImp.verifyUsernamePasswordApplicant(checkApplicant);
         }
     }
 
-}
+
+    }
