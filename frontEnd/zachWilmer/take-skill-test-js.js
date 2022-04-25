@@ -38,7 +38,7 @@ async function submitTest() {
     if (testPassed) {
         let requestURL = `http://localhost:8080/skilltest/${window.sessionStorage.getItem("current-test-id")}/result/${window.sessionStorage.getItem("individual-id")}`;
         let response = await fetch(requestURL, {method:"POST"});
-        if (response.status == 200) {
+        if (response.status == 201) {
             const data = await response.json();
             alert(data["message"])
             window.location.href = "view-skill-tests.html";

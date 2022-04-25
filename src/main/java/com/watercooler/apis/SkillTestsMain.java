@@ -14,7 +14,7 @@ public class SkillTestsMain {
         Javalin app = Javalin.create(config -> {
             config.enableCorsForAllOrigins();
             config.enableDevLogging();
-                }
+            }
         );
 
         SkillTestsController controller = new SkillTestsController();

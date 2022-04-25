@@ -23,13 +23,13 @@ async function submitSkillTest() {
         body: JSON.stringify(skillTest)
     };
 
-    const submit = await fetch("http://localhost:8080//skilltest/new", config);
-    if (submit.status == 200) {
-        alert("Skill test created successfully!");
+    const submit = await fetch("http://localhost:8080/skilltest/new", config);
+    if (submit.status == 201) {
+        alert("Test created successfully!");
         toLandingPage();
     } else {
-        let errorMessage = await submit.text();
-        alert(errorMessage);
+        let errorMessage = await submit.json();;
+        alert(errorMessage["errorMessage"]);
     }
 }
 

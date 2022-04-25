@@ -72,7 +72,7 @@ public class SkillTestsController {
         try {
             SkillTest skillTest = gson.fromJson(body, SkillTest.class);
             createTestSAO.createSkillTestService(skillTest);
-            ctx.result("{\"message\": \"Test created successfully\"");
+            ctx.result("{\"message\": \"Test created successfully!\"}");
             ctx.status(201);
             logger.info("FINISH API Handler postNewSkillTest with result:\nTest created successfully.\nStatus Code: " + 201);
         } catch (EmptyField | InputTooLong exception) {

@@ -26,6 +26,7 @@ import java.time.Duration;
 )
 public class TestRunner {
     public static WebDriver driver;
+    public static WebDriverWait wait;
 
     public static TestsLandingPageHome landingPage;
     public static ViewSkillTestsHome viewSkillTests;
@@ -44,6 +45,7 @@ public class TestRunner {
         createSkillTest = new CreateSkillTestHome(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 
     @AfterClass

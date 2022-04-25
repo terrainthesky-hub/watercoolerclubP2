@@ -28,6 +28,6 @@ public class TestsLandingPageHome {
     }
 
     public void clickCreateTestButton() {
-        driver.findElement(createTestButton);
+        driver.findElement(createTestButton).click();
     }
 }

@@ -12,8 +12,8 @@ public class ViewSkillTestsHome {
         this.driver = driver;
     }
 
-    public void selectSpecificSkillTest(int testId) {
-        skillTestButton = By.id("skillTest" + testId);
+    public void selectSpecificSkillTest(String testId) {
+        skillTestButton = By.id(String.format("skillTest%s",testId));
         driver.findElement(skillTestButton).click();
     }
 }
