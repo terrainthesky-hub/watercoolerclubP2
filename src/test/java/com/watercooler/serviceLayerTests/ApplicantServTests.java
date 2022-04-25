@@ -62,19 +62,19 @@ public class ApplicantServTests {
 
     //Last names cannot exceed 25 characters
     @Test(expectedExceptions = CustomUncheckedException.class,
-            expectedExceptionsMessageRegExp = "Last names cannot exceed 35 characters")
+            expectedExceptionsMessageRegExp = "Last names cannot exceed 25 characters")
     public void MoreThan35CharactersDescriptions() {
         String words = "haha";
-        while (words.length() < 32) {
+        while (words.length() < 26) {
             words = words.concat("haha");
         }
         testMock = new Applicant(
                 1,
                 "2",
-                "it doesn't matter",
+                words,
                 "not number",
                 "fake mail",
-                words,
+                "sdfjdj",
         "WHO CARES",
                 "NO SCHOOL",
                 "sdf");
@@ -83,19 +83,19 @@ public class ApplicantServTests {
 
     //Phone number cannot be less than 10 numbers
     @Test(expectedExceptions = CustomUncheckedException.class,
-            expectedExceptionsMessageRegExp = "Phone number cannot be less than 10 numbers")
+            expectedExceptionsMessageRegExp = "Phone numbers cannot be more than 10 numbers")
     public void MoreThan10Numbers() {
-        String words = "haha";
-        while (words.length() < 32) {
-            words = words.concat("haha");
+        String phoneNumber = "haha";
+        while (phoneNumber.length() < 11) {
+            phoneNumber = phoneNumber.concat("haha");
         }
         testMock = new Applicant(
                 1,
                 "2",
                 "it doesn't matter",
-                "not number",
+                phoneNumber,
                 "fake mail",
-                words,
+                "s",
         "WHO CARES",
                 "NO SCHOOL",
                 "sdf");
@@ -115,8 +115,8 @@ public class ApplicantServTests {
                 "2",
                 "it doesn't matter",
                 "not number",
-                "fake mail",
                 words,
+                "weret",
         "WHO CARES",
                 "NO SCHOOL",
                 "sdf");
@@ -147,10 +147,10 @@ public class ApplicantServTests {
     }
          //"Work reference descriptions cannot exceed 800 characters"
     @Test(expectedExceptions = CustomUncheckedException.class,
-            expectedExceptionsMessageRegExp = "Work reference descriptions cannot exceed 800 characters")
+            expectedExceptionsMessageRegExp = "Work reference descriptions exceed 800 characters")
     public void MoreThan800CharactersDescriptions() {
         String words = "haha";
-        while (words.length() < 803) {
+        while (words.length() < 801) {
             words = words.concat("haha");
         }
         testMock = new Applicant(
@@ -159,10 +159,12 @@ public class ApplicantServTests {
                 "it doesn't matter",
                 "not number",
                 "fake mail",
+                "rierieh",
                 words,
-        "WHO CARES",
-                "NO SCHOOL",
-                "sdf");
+                "hjhkjd",
+                "fkjfkj");
+
+
         applicantSAO.catchErrorsApplicant(testMock);
     }
 
@@ -180,9 +182,9 @@ public class ApplicantServTests {
                 "it doesn't matter",
                 "not number",
                 "fake mail",
+                "2",
+                "who cares",
                 words,
-        "WHO CARES",
-                "NO SCHOOL",
                 "sdf");
         applicantSAO.catchErrorsApplicant(testMock);
     }
