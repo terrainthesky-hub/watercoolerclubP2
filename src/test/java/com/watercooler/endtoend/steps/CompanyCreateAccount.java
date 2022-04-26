@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import com.watercooler.endtoend.poms.JobsHome.*;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 

@@ -1,7 +1,6 @@
-package com.watercooler.saos;
+package com.watercooler.saos.Lesley;
 
-import com.watercooler.entities.UsernamePasswordApplicant;
-import com.watercooler.entities.UsernamePasswordCompany;
+import com.watercooler.entities.Lesley.UsernamePasswordCompany;
 
 public interface UsernamePasswordCompanySAOInterface {
 

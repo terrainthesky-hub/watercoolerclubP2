@@ -11,7 +11,6 @@ public class UserCreateAccount {
 
     @Given("I am on the landing page user create")
     public void i_am_on_the_landing_page_user_create() {
-        // Write code here that turns the phrase above into concrete actions
         TestRunner.driver.get("file://C:/java/WCCP2/watercoolerclubP2/frontEnd/Lesley/landingPage.html");
     }
     @When("I click on the create new user button create")

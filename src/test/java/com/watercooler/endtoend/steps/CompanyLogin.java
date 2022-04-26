@@ -11,7 +11,6 @@ public class CompanyLogin {
 
     @Given("Account is already created and I am on the landing page company login")
     public void account_is_already_created_and_i_am_on_the_landing_page_company_login() {
-
         TestRunner.driver.get("file://C:/java/WCCP2/watercoolerclubP2/frontEnd/Lesley/landingPage.html");
     }
     @When("I click on the Sign in to an existing company account")

@@ -1,17 +1,15 @@
-package com.watercooler.serviceLayerTests;
+package com.watercooler.serviceLayerTests.Lesley;
 
-import com.watercooler.daos.UsernamePasswordApplicantDAOImp;
-import com.watercooler.daos.UsernamePasswordApplicantDAOInterface;
-import com.watercooler.daos.UsernamePasswordCompanyDAOImp;
-import com.watercooler.entities.UsernamePasswordApplicant;
-import com.watercooler.entities.UsernamePasswordCompany;
-import com.watercooler.saos.UsernamePasswordApplicantSAOImp;
-import com.watercooler.saos.UsernamePasswordApplicantSAOInterface;
-import com.watercooler.saos.UsernamePasswordCompanySAOImp;
-import com.watercooler.utilities.CustomUncheckedException;
+import com.watercooler.daos.Lesley.UsernamePasswordApplicantDAOImp;
+import com.watercooler.daos.Lesley.UsernamePasswordApplicantDAOInterface;
+import com.watercooler.daos.Lesley.UsernamePasswordCompanyDAOImp;
+import com.watercooler.entities.Lesley.UsernamePasswordApplicant;
+import com.watercooler.entities.Lesley.UsernamePasswordCompany;
+import com.watercooler.saos.Lesley.UsernamePasswordApplicantSAOImp;
+import com.watercooler.saos.Lesley.UsernamePasswordCompanySAOImp;
+import com.watercooler.utilities.customExceptions.Lesley.CustomUncheckedException;
 import org.testng.Assert;
 import org.mockito.Mockito;
-import org.mockito.internal.verification.VerificationModeFactory;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -125,6 +123,53 @@ public class TestUsernamePasswordCreateAndCheckSAL {
         }
 
     }
+
+    @Test
+    public void createCompanyUsernameTooLongNonMock() {
+        try{ UsernamePasswordCompany newCompany = new UsernamePasswordCompany(1, "This is a long string I'm making, hopefully it will be over 25 ", "Popeyes");
+            String result  = String.valueOf(usernamePasswordCompanySAOImp.catchErrorsUsernamePasswordCompany(newCompany));
+            Assert.fail();
+        }
+        catch (CustomUncheckedException e){
+            Assert.assertEquals(e.getMessage(), "Username needs to be less than 25 characters");
+        }
+
+    }
+    @Test
+    public void createCompanyUsernameTooShortNonMock() {
+        try{ UsernamePasswordCompany newCompany = new UsernamePasswordCompany(1, "wut", "Popeyes");
+            String result  = String.valueOf(usernamePasswordCompanySAOImp.catchErrorsUsernamePasswordCompany(newCompany));
+            Assert.fail();
+        }
+        catch (CustomUncheckedException e){
+            Assert.assertEquals(e.getMessage(), "Username needs to be at least 5 characters");
+        }
+
+    }
+
+    @Test
+    public void createCompanyPasswordTooLongNonMock() {
+        try{ UsernamePasswordCompany newCompany = new UsernamePasswordCompany(1, "this is fine ", "This is a long string I'm making, hopefully it will be over 25");
+            String result  = String.valueOf(usernamePasswordCompanySAOImp.catchErrorsUsernamePasswordCompany(newCompany));
+            Assert.fail();
+        }
+        catch (CustomUncheckedException e){
+            Assert.assertEquals(e.getMessage(), "Password needs to be less than 25 characters");
+        }
+
+    }
+    @Test
+    public void createCompanyPasswordTooShortNonMock() {
+        try{ UsernamePasswordCompany newCompany = new UsernamePasswordCompany(1, "This is fine", "wut");
+            String result  = String.valueOf(usernamePasswordCompanySAOImp.catchErrorsUsernamePasswordCompany(newCompany));
+            Assert.fail();
+        }
+        catch (CustomUncheckedException e){
+            Assert.assertEquals(e.getMessage(), "Password needs to be at least 5 characters");
+        }
+
+    }
+
 
 }
 

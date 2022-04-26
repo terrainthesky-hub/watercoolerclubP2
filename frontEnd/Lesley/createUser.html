@@ -38,12 +38,12 @@
 
         const response = await fetch("http://localhost:8080/create/applicant", config);
         if(response.status === 201){
-            // const id = await response.json();
-            // window.localStorage.setItem("companyId", id.companyId);
+            const id = await response.json();
+            window.localStorage.setItem("companyId", id.companyId);
             alert("You've successfully created a user account")
             window.location.href = "theVoid.html";
         } else {
-            alert("Incorrect Username or Password");
+            alert("Username and Password need to be more than 6 characters and less than 20");
         }
     }
 

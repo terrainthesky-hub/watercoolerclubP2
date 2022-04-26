@@ -1,9 +1,9 @@
-package com.watercooler.saos;
+package com.watercooler.saos.Lesley;
 
-import com.watercooler.daos.UsernamePasswordCompanyDAOImp;
-import com.watercooler.daos.UsernamePasswordCompanyDAOInterface;
-import com.watercooler.entities.UsernamePasswordCompany;
-import com.watercooler.utilities.CustomUncheckedException;
+import com.watercooler.daos.Lesley.UsernamePasswordCompanyDAOImp;
+import com.watercooler.daos.Lesley.UsernamePasswordCompanyDAOInterface;
+import com.watercooler.entities.Lesley.UsernamePasswordCompany;
+import com.watercooler.utilities.customExceptions.Lesley.CustomUncheckedException;
 
 public class UsernamePasswordCompanySAOImp implements UsernamePasswordCompanySAOInterface {
     public UsernamePasswordCompanyDAOInterface usernamePasswordCompanyDAOImp;

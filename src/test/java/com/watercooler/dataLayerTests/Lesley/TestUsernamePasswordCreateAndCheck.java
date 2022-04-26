@@ -1,12 +1,12 @@
-package com.watercooler.dataLayerTests;
+package com.watercooler.dataLayerTests.Lesley;
 
 
-import com.watercooler.daos.UsernamePasswordApplicantDAOImp;
-import com.watercooler.daos.UsernamePasswordApplicantDAOInterface;
-import com.watercooler.daos.UsernamePasswordCompanyDAOImp;
-import com.watercooler.daos.UsernamePasswordCompanyDAOInterface;
-import com.watercooler.entities.UsernamePasswordApplicant;
-import com.watercooler.entities.UsernamePasswordCompany;
+import com.watercooler.daos.Lesley.UsernamePasswordApplicantDAOImp;
+import com.watercooler.daos.Lesley.UsernamePasswordApplicantDAOInterface;
+import com.watercooler.daos.Lesley.UsernamePasswordCompanyDAOImp;
+import com.watercooler.daos.Lesley.UsernamePasswordCompanyDAOInterface;
+import com.watercooler.entities.Lesley.UsernamePasswordApplicant;
+import com.watercooler.entities.Lesley.UsernamePasswordCompany;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

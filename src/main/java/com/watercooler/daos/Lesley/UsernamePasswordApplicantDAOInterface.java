@@ -1,6 +1,6 @@
-package com.watercooler.daos;
+package com.watercooler.daos.Lesley;
 
-import com.watercooler.entities.UsernamePasswordApplicant;
+import com.watercooler.entities.Lesley.UsernamePasswordApplicant;
 
 
 public interface UsernamePasswordApplicantDAOInterface {

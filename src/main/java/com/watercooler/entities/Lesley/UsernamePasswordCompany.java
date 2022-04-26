@@ -1,4 +1,4 @@
-package com.watercooler.entities;
+package com.watercooler.entities.Lesley;
 
 import java.util.Objects;
 

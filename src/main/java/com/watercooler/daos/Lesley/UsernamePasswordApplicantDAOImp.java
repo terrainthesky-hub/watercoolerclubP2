@@ -1,7 +1,6 @@
-package com.watercooler.daos;
+package com.watercooler.daos.Lesley;
 
-import com.watercooler.entities.UsernamePasswordApplicant;
-import com.watercooler.entities.UsernamePasswordCompany;
+import com.watercooler.entities.Lesley.UsernamePasswordApplicant;
 import com.watercooler.utilities.DatabaseConnection;
 
 import java.sql.*;

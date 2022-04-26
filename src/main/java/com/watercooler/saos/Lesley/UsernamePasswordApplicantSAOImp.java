@@ -1,10 +1,8 @@
-package com.watercooler.saos;
+package com.watercooler.saos.Lesley;
 
-import com.watercooler.daos.UsernamePasswordApplicantDAOImp;
-import com.watercooler.daos.UsernamePasswordApplicantDAOInterface;
-import com.watercooler.entities.UsernamePasswordApplicant;
-import com.watercooler.entities.UsernamePasswordCompany;
-import com.watercooler.utilities.CustomUncheckedException;
+import com.watercooler.daos.Lesley.UsernamePasswordApplicantDAOInterface;
+import com.watercooler.entities.Lesley.UsernamePasswordApplicant;
+import com.watercooler.utilities.customExceptions.Lesley.CustomUncheckedException;
 
 public class UsernamePasswordApplicantSAOImp implements UsernamePasswordApplicantSAOInterface {
 
@@ -20,9 +18,9 @@ public class UsernamePasswordApplicantSAOImp implements UsernamePasswordApplican
                 throw new CustomUncheckedException("Username needs to be less than 25 characters");
             } else if (checkApplicant.getApplicantPassword().length() > 25) {
                 throw new CustomUncheckedException("Password needs to be less than 25 characters");
-            } else if (checkApplicant.getApplicantUsername().length() <= 5) {
+            } else if (checkApplicant.getApplicantUsername().length() < 5) {
             throw new CustomUncheckedException("Username needs to be at least 5 characters");
-            } else if (checkApplicant.getApplicantPassword().length() <= 5) {
+            } else if (checkApplicant.getApplicantPassword().length() < 5) {
               throw new CustomUncheckedException("Password needs to be at least 5 characters");
         } else {
                 return this.usernamePasswordApplicantDAOImp.createAccountApplicant(checkApplicant);
@@ -41,9 +39,9 @@ public class UsernamePasswordApplicantSAOImp implements UsernamePasswordApplican
             throw new CustomUncheckedException("Username needs to be less than 25 characters");
         } else if (checkApplicant.getApplicantPassword().length() > 25) {
             throw new CustomUncheckedException("Password needs to be less than 25 characters");
-        } else if (checkApplicant.getApplicantUsername().length() <= 5) {
+        } else if (checkApplicant.getApplicantUsername().length() < 5) {
             throw new CustomUncheckedException("Username needs to be at least 5 characters");
-        } else if (checkApplicant.getApplicantPassword().length() <= 5) {
+        } else if (checkApplicant.getApplicantPassword().length() < 5) {
             throw new CustomUncheckedException("Password needs to be at least 5 characters");
         } else {
             return usernamePasswordApplicantDAOImp.verifyUsernamePasswordApplicant(checkApplicant);

@@ -1,13 +1,13 @@
 package com.watercooler.apis.Lesley;
 
-import com.watercooler.daos.UsernamePasswordApplicantDAOImp;
-import com.watercooler.daos.UsernamePasswordApplicantDAOInterface;
-import com.watercooler.daos.UsernamePasswordCompanyDAOImp;
-import com.watercooler.daos.UsernamePasswordCompanyDAOInterface;
-import com.watercooler.saos.UsernamePasswordApplicantSAOImp;
-import com.watercooler.saos.UsernamePasswordApplicantSAOInterface;
-import com.watercooler.saos.UsernamePasswordCompanySAOImp;
-import com.watercooler.saos.UsernamePasswordCompanySAOInterface;
+import com.watercooler.daos.Lesley.UsernamePasswordApplicantDAOImp;
+import com.watercooler.daos.Lesley.UsernamePasswordApplicantDAOInterface;
+import com.watercooler.daos.Lesley.UsernamePasswordCompanyDAOImp;
+import com.watercooler.daos.Lesley.UsernamePasswordCompanyDAOInterface;
+import com.watercooler.saos.Lesley.UsernamePasswordApplicantSAOImp;
+import com.watercooler.saos.Lesley.UsernamePasswordApplicantSAOInterface;
+import com.watercooler.saos.Lesley.UsernamePasswordCompanySAOImp;
+import com.watercooler.saos.Lesley.UsernamePasswordCompanySAOInterface;
 import io.javalin.Javalin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
