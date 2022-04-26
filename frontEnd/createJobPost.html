@@ -8,13 +8,30 @@
 </head>
 <body>
     <h1>Create Your Job Post Below!</h1><br>
-    <h3>Enter the job ID:</h3><input id="jobIdInput" type="number"><br>
-    <h3>Enter the job title:</h3><input id="jobTitleInput" type="text"><br>
-    <h3>Enter the job type: </h3><input id="jobTypeInput" type="text"><br>
-    <h3>Enter the job description:</h3><input id="jobDescriptionInput" type="text"><br>
-    <h3>Enter the company ID:</h3><input id="companyIdInput" type="number">
-    <h3>Enter the job location:</h3><input id="jobLocationInput" type="text"><br>
-    <h3>Enter the Company name:</h3><input id="companyNameInput" type="text"><br>
+    <h3>Enter the job ID:</h3>
+    <input id="jobIdInput" type="number"><br>
+    <h3>Enter the job title:</h3>
+    <input id="jobTitleInput" type="text"><br>
+    <h3>Pick the job type: </h3>
+    <select id="jobTypeSelect" name="jobTypeSelect">
+        <option value="Trades">Trades</option>
+        <option value="Management">Management</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Technology">Technology</option>
+        <option value="Human Resources">Human Resources</option>
+    </select>
+    <h3>Enter the job description:</h3>
+    <input id="jobDescriptionInput" type="text"><br>
+    <h3>Enter the company ID:</h3>
+    <input id="companyIdInput" type="number">
+    <h3>Pick the job location:</h3>
+    <select name="jobLocationSelect" id="jobLocationSelect">
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Texas">Texas</option>
+        <option value="Kansas">Kansas</option>
+    </select>
+    <h3>Enter the Company name:</h3>
+    <input id="companyNameInput" type="text"><br>
     <button id="postJobButton" onclick="createJobPost()">Post</button><button id="buttonToReturnToHomeFromCreateJobPost">Go back</button>
 
 </body>
