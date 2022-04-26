@@ -1,12 +1,13 @@
 package com.watercooler.saos;
+import com.watercooler.daos.ApplicantDAO;
 import com.watercooler.entities.Applicant;
 import com.watercooler.daos.ApplicantDAOImp;
 import com. watercooler.utilities.customExceptions.CustomUncheckedException;
 
 
 public class ApplicantSAOImp implements ApplicantSAOSInterface{
-    private ApplicantDAOImp daoImp;
-    public ApplicantSAOImp(ApplicantDAOImp daoImp){
+    private ApplicantDAO daoImp;
+    public ApplicantSAOImp(ApplicantDAO daoImp){
         this.daoImp = daoImp;
     }
 

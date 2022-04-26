@@ -1,6 +1,4 @@
 package com.watercooler.javalin;
-import com.watercooler.daos.ApplicantDAOImp;
-import com.watercooler.saos.ApplicantSAOImp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import io.javalin.Javalin;
@@ -15,17 +13,22 @@ public class App {
         Javalin app = Javalin.create(config -> {
             config.enableCorsForAllOrigins();
             config.enableDevLogging();
-    });
-        ApplicantDAOImp DAO = new ApplicantDAOImp();
-        ApplicantSAOImp SAOS = new ApplicantSAOImp(DAO);
-        UpdateApplicantController updateApplicantController = new UpdateApplicantController(SAOS);
+        });
 
-        app.post("/update/applicant", controller.updateApplicants);
+        UpdateApplicantController controller = new UpdateApplicantController();
 
-        logger.info("Starting web server");
+            app.post("/update/applicant", controller.updateApplicant);
+
+            app.post("/update/Company", controller.updateCompany);
 
 
-        app.start();
+            logger.info("Starting web server");
+
+            app.start();
+
+
+
+
 
 
 

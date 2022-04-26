@@ -1,4 +1,5 @@
 package com.watercooler.saos;
+import com.watercooler.daos.CompanyDAO;
 import com.watercooler.entities.Company;
 import com.watercooler.daos.CompanyDAOImp;
 import com.watercooler.utilities.customExceptions.CustomUncheckedException;
@@ -7,8 +8,8 @@ import com.watercooler.utilities.customExceptions.CustomUncheckedException;
 
 
 public class CompanySAOImp implements CompanySAOSInterface{
-    private CompanyDAOImp daoImp;
-    public CompanySAOImp(CompanyDAOImp daoImp) { this.daoImp = daoImp;}
+    private CompanyDAO daoImp;
+    public CompanySAOImp(CompanyDAO daoImp) { this.daoImp = daoImp;}
 
 
 
