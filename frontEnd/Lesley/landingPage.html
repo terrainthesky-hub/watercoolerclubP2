@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hi! Welcome to our job search repository</title>
+</head>
+<body>
+    <button id="user" onclick="rerouteCreateApp()">Create an account for users</button>
+    <br>
+    <button id="userSignin" onclick="rerouteSigninApp()">Sign in to an existing user account</button>
+    <br>
+    <button id="company" onclick="rerouteCreateComp()">Create an account for companies</button>
+    <br>
+    <button id="companySignin" onclick="rerouteSigninComp()">Sign in to an existing company account</button>
+    
+    
+</body>
+<script>
+    function rerouteCreateApp(){
+        window.location.href = "createUser.html"
+    };
+
+    function rerouteSigninApp(){
+        window.location.href = "loginUser.html"
+    };
+
+    function rerouteCreateComp(){
+        window.location.href = "createCompany.html"
+    };
+
+    function rerouteSigninComp(){
+        window.location.href = "loginCompany.html"
+    }
+
+    </script>
+</html>
