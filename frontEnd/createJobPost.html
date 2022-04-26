@@ -19,21 +19,7 @@
 
 </body>
 <script>
-    // attmepting to pull company id from login so that they do not need to input it.
-    // need to figure out how to set jobId to incriment and does not have to be set.
-    /* const companyId = window.sessionStorage.getItem("token").split("Id").pop();
-
-    if(!window.sessionStorage.getItem("token")){
-        swal.fire({
-            title: 'You should not be here!',
-            confirmButtonText: 'Continue to log in. . .'
-        }).then(function(result) {
-            if (result.isConfirmed) {
-                window.location.href=""
-            }
-        });
-    } */
-
+    
     function resetInputs(){
         document.getElementById("jobId").value="";
         document.getElementById("title").value="";
@@ -58,8 +44,6 @@
             'type': type,
             'description': description,
             'companyId': companyId,
-            // if tokens are created at the login the below code can be uncommented
-            //'token': window.sessionStorage.getItem("token"),
             'location': location,
             'companyName': companyName
         }
