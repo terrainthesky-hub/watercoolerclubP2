@@ -21,14 +21,13 @@ public class CompanySAOImp implements CompanySAOSInterface{
         } else if (company.getPhoneNumber().length() > 10) {
             throw new CustomUncheckedException("Phone numbers cannot be less than 10 numbers");
         } else if (company.getEmail().length() > 30) {
-            throw new CustomUncheckedException("Emails cannot exceed 30 characters ");
+            throw new CustomUncheckedException("Emails cannot exceed 30 characters");
         } else if (company.getAboutUs().length() > 500) {
             throw new CustomUncheckedException("Work descriptions cannot exceed 500 characters");
         } else if (company.getRelatedJobs().length() > 800) {
             throw new CustomUncheckedException("Work reference descriptions exceed 800 characters");
-
         }
 
-        return 0;
+        return daoImp.updateCompany(company);
     }
 }
