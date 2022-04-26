@@ -11,11 +11,11 @@ public class Company {
     private String relatedJobs;
     private String location;
 
-    Company() {
+    public Company() {
 
     }
 
-    Company(int id, String name, long phoneNumber, String email, String aboutUs, String relatedJobs, String location) {
+    public Company(int id, String name, long phoneNumber, String email, String aboutUs, String relatedJobs, String location) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
