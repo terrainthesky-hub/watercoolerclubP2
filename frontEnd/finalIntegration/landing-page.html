@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Water Cooler Club Job Board</title>
+</head>
+<body>
+
+    <input type="text" id="username" placeholder="Type your username here">
+    <br>
+    <input type="text" id="password" placeholder="Type your password here">
+    <br>
+    <button id="ind-login" onclick="indLogin()">Login as an Individual</button>
+    <button id="comp-login" onclick="compLogin()">Login as a Company</button>
+
+</body>
+<script>
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    async function indLogin() {
+
+        let credentialsUnPw = {"applicantUsername": "username", "applicantPassword": "password"}
+
+        credentialsUnPw["applicantUsername"] = usernameInput.value;
+        credentialsUnPw["applicantPassword"] = passwordInput.value;
+
+        let config = {
+            method:"POST",
+            headers:{'Content-Type':"application/json"},
+            body: JSON.stringify(credentialsUnPw)
+        };
+
+        const response = await fetch("http://localhost:8080/login/applicant", config);
+        if(response.status === 200){
+            const id = await response.json();
+            window.localStorage.setItem("applicantId", id.applicantId);
+            window.location.href = "ind-home.html";
+        } else {
+            alert("Incorrect Username or Password");
+        }
+    }
+
+    async function compLogin(){
+        let credentialsUnPw = {"companyUsername": "username", "companyPassword": "password"}
+
+        credentialsUnPw["companyUsername"] = usernameInput.value;
+        credentialsUnPw["companyPassword"] = passwordInput.value;
+
+        let config = {
+            method:"POST",
+            headers:{'Content-Type':"application/json"},
+            body: JSON.stringify(credentialsUnPw)
+        };
+
+        const response = await fetch("http://localhost:8080/login/company", config);
+        if(response.status === 200){
+            const id = await response.json();
+            window.localStorage.setItem("companyId", id.companyId);
+            window.location.href = "comp-home.html";
+        } else {
+            alert("Incorrect Username or Password");
+        }
+    }
+    
+</script>
+</html>

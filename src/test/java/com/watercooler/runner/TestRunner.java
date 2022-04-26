@@ -1,17 +1,21 @@
 package com.watercooler.runner;
 
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+
+import org.junit.BeforeClass;
+import org.junit.AfterClass;
+import org.junit.runner.RunWith;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.watercooler.poms.CreateSkillTestHome;
 import com.watercooler.poms.TakeSkillTestHome;
 import com.watercooler.poms.TestsLandingPageHome;
 import com.watercooler.poms.ViewSkillTestsHome;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import org.junit.BeforeClass;
-import org.junit.AfterClass;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.watercooler.poms.JobsHome;
 
 import java.io.File;
 import java.time.Duration;
@@ -22,7 +26,7 @@ import java.time.Duration;
 @CucumberOptions(
         features = {"src/test/resources/features"},
         glue = "com/watercooler/steps",
-        plugin = {"pretty", "html:documentation/e2eReports/skill-tests-e2e-report.html"}
+        plugin = {"pretty", "html:documentation/full-e2e-report.html"}
 )
 public class TestRunner {
     public static WebDriver driver;
@@ -32,6 +36,7 @@ public class TestRunner {
     public static ViewSkillTestsHome viewSkillTests;
     public static TakeSkillTestHome takeSkillTest;
     public static CreateSkillTestHome createSkillTest;
+    public static JobsHome jobsHome;
 
     @BeforeClass
     public static void setup() {
@@ -43,6 +48,7 @@ public class TestRunner {
         viewSkillTests = new ViewSkillTestsHome(driver);
         takeSkillTest = new TakeSkillTestHome(driver);
         createSkillTest = new CreateSkillTestHome(driver);
+        jobsHome = new JobsHome(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         wait = new WebDriverWait(driver, Duration.ofSeconds(2));
