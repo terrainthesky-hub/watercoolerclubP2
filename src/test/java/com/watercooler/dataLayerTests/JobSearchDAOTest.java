@@ -15,7 +15,7 @@ public class JobSearchDAOTest {
 
     @Test
     public void selectJobSuccess() {
-        List<Job> jobList = jobSearchDAO.selectJob("testLocation2", "Technology");
+        List<Job> jobList = jobSearchDAO.selectJob("Technology", "testLocation2");
         Assert.assertNotEquals(jobList.size(), 0);
 
     }

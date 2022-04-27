@@ -39,11 +39,12 @@ public class JobSearchSLImp implements JobSearchSLInt {
 
 
     @Override
-    public List<Job> selectJob(String jobLocation, String jobType) throws JobNotFound {
-        List<Job>job = jobSearchDAO.selectJob(jobLocation, jobType);
+    public List<Job> selectJob(String jobType, String jobLocation) throws JobNotFound {
+        List<Job>job = jobSearchDAO.selectJob(jobType, jobLocation);
         if (job == null) {
             throw new JobNotFound("Could not find job");
         } else {
+            System.out.println(job);
             return job;
 
         }

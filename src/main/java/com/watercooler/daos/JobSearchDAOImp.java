@@ -10,7 +10,7 @@ import java.util.List;
 public class JobSearchDAOImp implements JobSearchDAOInt {
 
     @Override
-    public List<Job> selectJob(String jobLocation, String jobType) {
+    public List<Job> selectJob(String jobType, String jobLocation) {
 
         try (Connection connection = DatabaseConnection.createConnection()) {
             String append = "";
@@ -27,7 +27,7 @@ public class JobSearchDAOImp implements JobSearchDAOInt {
 //            System.out.println(append);
 //
             String sql = "select * from job_table" + append;
-            System.out.println(sql);
+//            System.out.println(sql);
             Statement s = connection.createStatement();
 //            select * from job_table where job_location = 'testLocation4' and job_type = 'Technology'
             s.execute(sql);
@@ -46,6 +46,7 @@ public class JobSearchDAOImp implements JobSearchDAOInt {
                 joblist.add(job);
             }
             //rs.next();
+            System.out.println(joblist);
             return joblist;
         } catch (SQLException e) {
             e.printStackTrace();
