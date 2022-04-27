@@ -37,7 +37,7 @@ public class ApplicantSAOImp implements ApplicantSAOSInterface{
 //                throw new
 //            }
         return result;
-
+//
 
 
     }

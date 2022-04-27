@@ -10,10 +10,14 @@ public class CompanyTests {
 
 
     @Test
-    public void updateCompanySuccess() {
+    public void updateCompanySuccess(){
 
-        Company company = new Company(2, "companyName: 1", "phone: 2", "email: 3", "aboutUs: 4", "relatedJobs: 5", "Atlanta");
-        int result = companyDAO.updateCompany(company);
-        Assert.assertTrue(result == 1);
+        Company company = new Company(-1, "companyName: 1", "phone: 2", "email: 3", "aboutUs: 4", "relatedJobs: 5","Atlanta");
+         int result = companyDAO.updateCompany(company);
+         Assert.assertTrue(result == 1);
     }
+
+
+
+
 }
