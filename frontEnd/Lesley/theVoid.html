@@ -5,6 +5,20 @@
     <title>Welcome to the void!</title>
 </head>
 <body>
+    <button id="log_out" onclick="logout()">
+        Logout from your account
+     </button>
     
 </body>
+<script>
+const idInputApplicant = window.localStorage.getItem("applicantId");
+const idInputCompany = window.localStorage.getItem("companyId");
+
+function logout(){
+        window.localStorage.removeItem("applicantId");
+        window.localStorage.removeItem("companyId");
+        window.location.href = "landingPage.html";
+    }
+
+</script>
 </html>

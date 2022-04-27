@@ -43,10 +43,6 @@ public class LoginAPI {
 
         app.post("/create/company", controller.UnPwCompanyCreate);
 
-//        app.post("/get/applicant/By{id}", controller.UnPwApplicantGet);
-//
-//        app.post("/get/company/By{id}", controller.UnPwCompanyGet);
-
         app.start();
 
     } // main end

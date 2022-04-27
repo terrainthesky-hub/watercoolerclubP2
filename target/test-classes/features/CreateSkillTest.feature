@@ -12,7 +12,7 @@ Feature: As a company, I want to create skill tests so that I can ensure that an
     When I input the "<thirdAnswer>" 3A
     When I click the finalize button
     When I get an alert telling me that the test was created successfully
-#    Then I am then on the landing page
+    Then I am then on the landing page
 
     Examples:
     | companyId | firstQuestion | firstAnswer | secondQuestion | secondAnswer | thirdQuestion | thirdAnswer |
