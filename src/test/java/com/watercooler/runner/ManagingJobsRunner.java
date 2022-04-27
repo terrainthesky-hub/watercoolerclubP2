@@ -7,6 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
@@ -18,7 +19,7 @@ import java.time.Duration;
         plugin = {"pretty", "html:documentation/e2eReports/managingJobPostse2eReport.html"}
 )
 public class ManagingJobsRunner {
-    public static SafariDriver driver;
+    public static WebDriver driver;
     public static CreateJobPostPOMs createJob;
     public static CompanyLandingPagePOMs landingPage;
 

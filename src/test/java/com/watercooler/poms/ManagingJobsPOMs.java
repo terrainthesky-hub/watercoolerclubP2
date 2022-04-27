@@ -1,8 +1,8 @@
 package com.watercooler.poms;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.WebDriver;
 
 public class ManagingJobsPOMs {
-    private SafariDriver driver;
+    private WebDriver driver;
 }

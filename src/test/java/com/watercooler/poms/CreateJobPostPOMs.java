@@ -1,10 +1,10 @@
 package com.watercooler.poms;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.WebDriver;
 
 public class CreateJobPostPOMs {
-    private SafariDriver driver;
+    private WebDriver driver;
     private By jobIdInput = By.id("jobIdInput");
     private By jobTitleInput = By.id("jobTitleInput");
     private By jobTypeInput = By.id("jobTypeInput");
@@ -14,7 +14,7 @@ public class CreateJobPostPOMs {
     private By companyNameInput = By.id("companyNameInput");
     private By createJobPostButton = By.id("postJobButton");
 
-    public CreateJobPostPOMs(SafariDriver driver){
+    public CreateJobPostPOMs(WebDriver driver){
         this.driver = driver;
     }
 

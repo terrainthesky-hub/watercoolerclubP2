@@ -1,17 +1,17 @@
 package com.watercooler.poms;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.WebDriver;
 
 public class CompanyLandingPagePOMs {
-    private SafariDriver driver;
+    private WebDriver driver;
     private By createJobPostButton = By.id("createJobPostFromHome");
     private By viewPostedJobsButton = By.id("viewPostedJobsFromHome");
     private By editCompanyProfile = By.id("editCompanyProfileFromHome");
     private By manageCompanySkillTests = By.id("manageCompanySkillTestsFromHome");
     private By logOut = By.id("logOutFromCompanyHome");
 
-    public CompanyLandingPagePOMs(SafariDriver driver){
+    public CompanyLandingPagePOMs(WebDriver driver){
         this.driver = driver;
     }
 
