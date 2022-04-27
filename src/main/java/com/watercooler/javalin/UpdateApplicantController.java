@@ -55,14 +55,26 @@ public class UpdateApplicantController{
     CompanySAOSInterface LI  = new CompanySAOImp(SI);
 
     public Handler updateCompany = ctx -> {
-        logger.info("update company");
-        String body = ctx.body();
-        Gson gson = new Gson();
-        Company updateCompany = gson.fromJson(body,Company.class);
-        String infoupdate = gson.toJson(updateCompany);
-        int info = LI.catchErrorsCompany(updateCompany);
-        ctx.result(String.valueOf(infoupdate));
-        logger.info("updated company");
+
+        try {
+            logger.info("update company");
+            String body = ctx.body();
+            Gson gson = new Gson();
+            logger.info("1");
+            Company updateCompany = gson.fromJson(body, Company.class);
+            logger.info("2");
+            int info = LI.catchErrorsCompany(updateCompany);
+            logger.info(info);
+            String infoupdate = gson.toJson(info);
+            ctx.result(infoupdate);
+
+
+            ctx.status(201);
+
+        } catch (CustomUncheckedException e) {
+            ctx.result(e.getMessage());
+            ctx.status(405);
+        }
 
 
      };
