@@ -2,7 +2,9 @@ package com.watercooler.entities;
 
 import java.util.Objects;
 
-public class Job {
+public class
+
+Job {
     private int jobId;
     private String title;
     private String type;
@@ -11,7 +13,7 @@ public class Job {
     private String location;
     private String companyName;
 
-    Job() {
+    public Job() {
 
     }
 

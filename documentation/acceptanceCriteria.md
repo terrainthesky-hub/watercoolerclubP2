@@ -181,7 +181,7 @@
 - When I click on the View Applications button
 - Then I am on the my applications page
 
-##User Story: As a company, I want to create an account so that I can log in and look for applicants.
+## User Story: As a company, I want to create an account so that I can log in and look for applicants.
 ### Positive Acceptance Criteria (Happy Path)
 - Given I am on the login page
 - When I click the Create Company Account button

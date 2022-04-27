@@ -21,7 +21,6 @@
             <artifactId>postgresql</artifactId>
             <version>42.3.3</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-testng -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -29,7 +28,6 @@
             <version>0.4.16</version>
             <scope>test</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/io.javalin/javalin -->
         <dependency>
             <groupId>io.javalin</groupId>
@@ -40,6 +38,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.31</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.17.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
@@ -74,10 +78,7 @@
         </dependency>
 
     </dependencies>
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
-</project>

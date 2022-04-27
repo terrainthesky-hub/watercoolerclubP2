@@ -1,8 +1,7 @@
 package com.watercooler.utilities.customExceptions;
 
 public class InputTooLong extends RuntimeException{
-
-    public InputTooLong(String message){
+    public InputTooLong(String message) {
         super(message);
     }
 }
