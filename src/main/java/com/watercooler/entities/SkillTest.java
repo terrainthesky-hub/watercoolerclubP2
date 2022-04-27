@@ -12,11 +12,11 @@ public class SkillTest {
     private String answerThree;
     private int companyId;
 
-    SkillTest() {
+    public SkillTest() {
 
     }
 
-    SkillTest(int testId, String questionOne, String answerOne, String questionTwo, String answerTwo, String questionThree, String answerThree, int companyId){
+    public SkillTest(int testId, String questionOne, String answerOne, String questionTwo, String answerTwo, String questionThree, String answerThree, int companyId){
         this.testId = testId;
         this.questionOne = questionOne;
         this.answerOne = answerOne;

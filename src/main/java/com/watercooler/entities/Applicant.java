@@ -13,6 +13,8 @@ public class Applicant {
     private String education;
     private String desiredJob;
 
+    public Applicant() { }
+
     public Applicant(int id, String firstName, String lastName, String phoneNumber, String email, String workHistory, String references, String education, String desiredJob) {
         this.id = id;
         this.firstName = firstName;
@@ -65,17 +67,11 @@ public class Applicant {
         this.email = email;
     }
 
-    public String getWorkHistory() {
-        return workHistory;
-    }
+    public String getWorkHistory() { return workHistory; }
 
-    public void setWorkHistory(String workHistory) {
-        this.workHistory = workHistory;
-    }
+    public void setWorkHistory(String workHistory) { this.workHistory = workHistory; }
 
-    public String getReferences() {
-        return references;
-    }
+    public String getReferences() { return references; }
 
     public void setReferences(String references) {
         this.references = references;
@@ -89,20 +85,16 @@ public class Applicant {
         this.education = education;
     }
 
-    public String getDesiredJob() {
-        return desiredJob;
-    }
+    public String getDesiredJob() { return desiredJob; }
 
-    public void setDesiredJob(String desiredJob) {
-        this.desiredJob = desiredJob;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Applicant applicant = (Applicant) o;
-        return id == applicant.id && firstName.equals(applicant.firstName) && lastName.equals(applicant.lastName) && phoneNumber.equals(applicant.phoneNumber) && email.equals(applicant.email) && workHistory.equals(applicant.workHistory) && references.equals(applicant.references) && education.equals(applicant.education) && desiredJob.equals(applicant.desiredJob);
+
+        return id == applicant.id && phoneNumber == applicant.phoneNumber && Objects.equals(firstName, applicant.firstName) && Objects.equals(lastName, applicant.lastName) && Objects.equals(email, applicant.email) && Objects.equals(workHistory, applicant.workHistory) && Objects.equals(references, applicant.references) && Objects.equals(education, applicant.education) && Objects.equals(desiredJob, applicant.desiredJob);
     }
 
     @Override

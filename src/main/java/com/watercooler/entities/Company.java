@@ -11,6 +11,10 @@ public class Company {
     private String relatedJobs;
     private String location;
 
+    public Company() {
+
+    }
+
     public Company(int id, String name, String phoneNumber, String email, String aboutUs, String relatedJobs, String location) {
         this.id = id;
         this.name = name;
