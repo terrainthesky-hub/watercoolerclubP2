@@ -126,9 +126,9 @@ public class ApplicantServTests {
         //"work descriptions cannot exceed 1500 characters"
     @Test(expectedExceptions = CustomUncheckedException.class,
             expectedExceptionsMessageRegExp = "Work descriptions cannot exceed 500 characters")
-    public void MoreThan1500CharactersDescriptions() {
+    public void MoreThan500CharactersDescriptions() {
         String words = "haha";
-        while (words.length() < 1501) {
+        while (words.length() < 501) {
             words = words.concat("haha");
         }
         testMock = new Applicant(

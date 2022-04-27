@@ -23,8 +23,8 @@ public class ApplicantSAOImp implements ApplicantSAOSInterface{
             throw new CustomUncheckedException("Phone numbers cannot be more than 10 numbers");
         } else if (applicant.getEmail().length() > 30) {
             throw new CustomUncheckedException("Emails cannot exceed 30 characters");
-        } else if (applicant.getWorkHistory().length() > 1500) {
-            throw new CustomUncheckedException("Work descriptions cannot exceed 1500 characters");
+        } else if (applicant.getWorkHistory().length() > 500) {
+            throw new CustomUncheckedException("Work descriptions cannot exceed 500 characters");
         } else if (applicant.getReferences().length() > 800) {
             throw new CustomUncheckedException("Work reference descriptions exceed 800 characters");
         } else if (applicant.getEducation().length() > 200) {
