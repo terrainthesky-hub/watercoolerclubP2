@@ -4,7 +4,7 @@
 - Javascript
 - HTML
 - CSS
-- Postgres SQL
+- PostgreSQL
 - Java
 - Javalin
 - Postman
