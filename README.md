@@ -74,3 +74,10 @@
   - create skill tests.
   - delete jobs.
   - log out.
+
+# Contributers
+- Zachary Wilmer
+- Lesley Rich
+- Jeryl Skinner
+- Dylan Mercer
+- Grace George
